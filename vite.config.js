@@ -1,8 +1,18 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: "./",
-  test: {
-    environment: "happy-dom",
+  base: process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+    : '/',
+
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false
   },
+
+  test: {
+    environment: 'happy-dom',
+    globals: true
+  }
 });
