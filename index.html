@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu bois quoi ?</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <h1>Tu bois quoi ?</h1>
+  </header>
+
+  <main class="app-main">
+    <section class="card builder-section">
+      <h2>Ajouter une boisson</h2>
+      <form id="drink-form" class="drink-form">
+        <div class="form-group">
+          <label for="drink-name">Nom</label>
+          <input type="text" id="drink-name" placeholder="ex: Pint, Mojito..." required maxlength="25">
+        </div>
+
+        <div class="form-group">
+          <label>Verre</label>
+          <div class="glass-selector" id="glass-selector">
+            <button type="button" class="btn-glass active" data-glass="pint" aria-label="Pinte">🍺</button>
+            <button type="button" class="btn-glass" data-glass="cocktail" aria-label="Cocktail">🍸</button>
+            <button type="button" class="btn-glass" data-glass="wine" aria-label="Vin">🍷</button>
+            <button type="button" class="btn-glass" data-glass="shot" aria-label="Shot">🥃</button>
+            <button type="button" class="btn-glass" data-glass="soft" aria-label="Soft">🥤</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="drink-color">Couleur</label>
+          <div class="color-picker-wrapper">
+            <input type="color" id="drink-color" value="#f5a623">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ajouter à la commande</button>
+      </form>
+    </section>
+    <section class="card order-section">
+      <div class="order-header">
+        <h2>Commande (<span id="total-count">0</span>)</h2>
+        <button id="reset-order" class="btn btn-danger-text">Vider</button>
+      </div>
+
+      <div id="order-list" class="order-list">
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="data/app.js"></script>
+</body>
+</html>
