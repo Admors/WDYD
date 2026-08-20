@@ -1,0 +1,351 @@
+:root {
+  --bg-main: #0a0e17;
+  --card-bg: #161f30;
+  --card-border: #243047;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-primary: #38bdf8;
+  --accent-primary-hover: #0284c7;
+  --danger-color: #ef4444;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.app-main {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Formulaire & Carte de Création */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.builder-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.drink-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-size: 1rem;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: var(--accent-primary);
+}
+
+/* Grille de sélection des verres SVG */
+.glass-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.btn-glass-type {
+  background: var(--bg-main);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-glass-type span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.svg-glass-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.glass-outline {
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.glass-liquid-preview {
+  fill: #f59e0b;
+  opacity: 0.8;
+}
+
+.btn-glass-type.active {
+  border-color: var(--accent-primary);
+  background: #1e2d42;
+  transform: translateY(-2px);
+}
+
+.btn-glass-type.active .glass-outline {
+  stroke: var(--accent-primary);
+}
+
+.btn-glass-type.active span {
+  color: var(--text-main);
+}
+
+/* Picker couleur */
+.color-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-main);
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
+
+.color-preview-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Boutons principaux */
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-submit {
+  background-color: var(--accent-primary);
+  color: #0a0e17;
+}
+
+.btn-submit:active {
+  background-color: var(--accent-primary-hover);
+  transform: scale(0.98);
+}
+
+/* Section Cartes de Commande (Pour le Barman) */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.order-header h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.btn-reset {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.drink-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* GROSSE CARTE BOISSON ERGONOMIQUE */
+.drink-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.drink-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  word-break: break-word;
+}
+
+/* Visualiseur Verre SVG Central */
+.drink-card-visual {
+  width: 90px;
+  height: 90px;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drink-card-visual svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+/* Contrôles tactiles XXL (+ / -) */
+.drink-card-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  background: var(--bg-main);
+  padding: 0.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+}
+
+.drink-card.is-zero {
+  opacity: 0.45;
+  border-color: #334155;
+  filter: grayscale(0.5);
+}
+
+.drink-card.is-zero .btn-minus {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.btn-counter {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--card-bg);
+  color: var(--text-main);
+  font-size: 1.4rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.btn-counter:active {
+  background: var(--accent-primary);
+  color: #0a0e17;
+  transform: scale(0.92);
+}
+
+.drink-card-qty {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-classico {
+  background: #f59e0b;
+  color: #0a0e17;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-classico:active {
+  transform: scale(0.95);
+  background: #d97706;
+}
