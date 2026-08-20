@@ -1,18 +1,13 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/WDYD/',
+  // Racine par défaut pour le local (localhost:4173/)
+  base: '/',
 
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        entryFileNames: `assets/[name]-[hash].js`,
-        chunkFileNames: `assets/[name]-[hash].js`,
-        assetFileNames: `assets/[name]-[hash].[ext]`
-      }
-    }
+    sourcemap: false
   },
 
   test: {
