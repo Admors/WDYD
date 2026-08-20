@@ -4,145 +4,151 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tu bois quoi ?</title>
+
+  <!-- Meta Mobile & PWA -->
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Tu bois quoi ?" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#0a0e17" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+  <!-- Icônes (Sans ./ pour éviter les soucis de sous-paths GitHub Pages) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/x-icon" href="apple-touch-icon.png" />
 </head>
-  <body>
-    <header class="app-header">
-      <h1>🍻 Tu bois quoi ?</h1>
-      <p class="subtitle">Prépare la commande pour le barman</p>
-    </header>
+<body>
+  <header class="app-header">
+    <h1>🍻 Tu bois quoi ?</h1>
+    <p class="subtitle">Prépare la commande pour le barman</p>
+  </header>
 
-    <main class="app-main">
-      <section class="card builder-card">
-        <h2>Ajoute une boisson</h2>
+  <main class="app-main">
+    <section class="card builder-card">
+      <h2>Ajoute une boisson</h2>
 
-        <form id="drink-form" class="drink-form">
-          <div class="form-group">
-            <label for="drink-name">Nom de la boisson</label>
-            <input
-              type="text"
-              id="drink-name"
-              placeholder="ex: Pinte, Mojito, Spritz..."
-              required
-              maxlength="25"
-              autocomplete="off"
-            />
+      <form id="drink-form" class="drink-form">
+        <div class="form-group">
+          <label for="drink-name">Nom de la boisson</label>
+          <input
+            type="text"
+            id="drink-name"
+            placeholder="ex: Pinte, Mojito, Spritz..."
+            required
+            maxlength="25"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Forme du verre</label>
+          <div class="glass-grid" id="glass-selector">
+            <button
+              type="button"
+              class="btn-glass-type active"
+              data-glass="pint"
+              title="Pinte"
+            >
+              <svg viewBox="0 0 24 24" class="svg-glass-icon">
+                <path d="M6 2L8 22H16L18 2H6Z" class="glass-outline" />
+                <path d="M7 6L8 20H16L17 6H7Z" class="glass-liquid-preview" />
+              </svg>
+              <span>Pinte</span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-glass-type"
+              data-glass="cocktail"
+              title="Cocktail"
+            >
+              <svg viewBox="0 0 24 24" class="svg-glass-icon">
+                <path
+                  d="M3 3L12 13L21 3H3ZM12 13V20M8 20H16"
+                  class="glass-outline"
+                />
+                <path d="M6 6L12 12.5L18 6H6Z" class="glass-liquid-preview" />
+              </svg>
+              <span>Cocktail</span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-glass-type"
+              data-glass="wine"
+              title="Vin"
+            >
+              <svg viewBox="0 0 24 24" class="svg-glass-icon">
+                <path
+                  d="M6 3C6 3 5 13 12 13C19 13 18 3 18 3H6ZM12 13V20M8 20H16"
+                  class="glass-outline"
+                />
+                <path
+                  d="M7.5 7C7.5 7 7 11.5 12 11.5C17 11.5 16.5 7 16.5 7H7.5Z"
+                  class="glass-liquid-preview"
+                />
+              </svg>
+              <span>Vin</span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-glass-type"
+              data-glass="shot"
+              title="Shot"
+            >
+              <svg viewBox="0 0 24 24" class="svg-glass-icon">
+                <path d="M7 8L8.5 21H15.5L17 8H7Z" class="glass-outline" />
+                <path
+                  d="M8 12L9 20H15L16 12H8Z"
+                  class="glass-liquid-preview"
+                />
+              </svg>
+              <span>Shot</span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-glass-type"
+              data-glass="soft"
+              title="Soft"
+            >
+              <svg viewBox="0 0 24 24" class="svg-glass-icon">
+                <path d="M7 3H17V21H7V3Z" class="glass-outline" />
+                <path d="M8 8H16V20H8V8Z" class="glass-liquid-preview" />
+              </svg>
+              <span>Soft</span>
+            </button>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label>Forme du verre</label>
-            <div class="glass-grid" id="glass-selector">
-              <button
-                type="button"
-                class="btn-glass-type active"
-                data-glass="pint"
-                title="Pinte"
-              >
-                <svg viewBox="0 0 24 24" class="svg-glass-icon">
-                  <path d="M6 2L8 22H16L18 2H6Z" class="glass-outline" />
-                  <path d="M7 6L8 20H16L17 6H7Z" class="glass-liquid-preview" />
-                </svg>
-                <span>Pinte</span>
-              </button>
-
-              <button
-                type="button"
-                class="btn-glass-type"
-                data-glass="cocktail"
-                title="Cocktail"
-              >
-                <svg viewBox="0 0 24 24" class="svg-glass-icon">
-                  <path
-                    d="M3 3L12 13L21 3H3ZM12 13V20M8 20H16"
-                    class="glass-outline"
-                  />
-                  <path d="M6 6L12 12.5L18 6H6Z" class="glass-liquid-preview" />
-                </svg>
-                <span>Cocktail</span>
-              </button>
-
-              <button
-                type="button"
-                class="btn-glass-type"
-                data-glass="wine"
-                title="Vin"
-              >
-                <svg viewBox="0 0 24 24" class="svg-glass-icon">
-                  <path
-                    d="M6 3C6 3 5 13 12 13C19 13 18 3 18 3H6ZM12 13V20M8 20H16"
-                    class="glass-outline"
-                  />
-                  <path
-                    d="M7.5 7C7.5 7 7 11.5 12 11.5C17 11.5 16.5 7 16.5 7H7.5Z"
-                    class="glass-liquid-preview"
-                  />
-                </svg>
-                <span>Vin</span>
-              </button>
-
-              <button
-                type="button"
-                class="btn-glass-type"
-                data-glass="shot"
-                title="Shot"
-              >
-                <svg viewBox="0 0 24 24" class="svg-glass-icon">
-                  <path d="M7 8L8.5 21H15.5L17 8H7Z" class="glass-outline" />
-                  <path
-                    d="M8 12L9 20H15L16 12H8Z"
-                    class="glass-liquid-preview"
-                  />
-                </svg>
-                <span>Shot</span>
-              </button>
-
-              <button
-                type="button"
-                class="btn-glass-type"
-                data-glass="soft"
-                title="Soft"
-              >
-                <svg viewBox="0 0 24 24" class="svg-glass-icon">
-                  <path d="M7 3H17V21H7V3Z" class="glass-outline" />
-                  <path d="M8 8H16V20H8V8Z" class="glass-liquid-preview" />
-                </svg>
-                <span>Soft</span>
-              </button>
-            </div>
+        <div class="form-group">
+          <label for="drink-color">Couleur du liquide</label>
+          <div class="color-picker-container">
+            <input type="color" id="drink-color" value="#f59e0b" />
+            <span class="color-preview-text">Personnaliser la teinte</span>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="drink-color">Couleur du liquide</label>
-            <div class="color-picker-container">
-              <input type="color" id="drink-color" value="#f59e0b" />
-              <span class="color-preview-text">Personnaliser la teinte</span>
-            </div>
-          </div>
+        <button type="submit" class="btn btn-submit">
+          + Ajouter à la commande
+        </button>
+      </form>
+    </section>
 
-          <button type="submit" class="btn btn-submit">
-            + Ajouter à la commande
-          </button>
-        </form>
-      </section>
+    <!-- Zone de Commande Globale -->
+    <section class="order-section">
+      <div class="order-header">
+        <h2>Commande (<span id="total-count">0</span>)</h2>
+        <div class="header-actions">
+          <button class="btn-template active" data-template="classico" type="button">⚡ Classico</button>
+          <button class="btn-template" data-template="souper" type="button">🍷 Souper (Vin)</button>
+          <button id="reset-order" class="btn-reset" type="button">Vider</button>
+        </div>
+      </div>
 
-      <!-- Zone de Commande Globale -->
-      <section class="order-section">
-        <div class="order-header">
-          <h2>Commande (<span id="total-count">0</span>)</h2>
-          <div class="header-actions">
-            <button class="btn-template active" data-template="classico" type="button">⚡ Classico</button>
-            <button class="btn-template" data-template="souper" type="button">🍷 Souper (Vin)</button>
-            <button id="reset-order" class="btn-reset" type="button">Vider</button>
-          </div>
-        <div id="order-list" class="drink-cards-grid"></div>
-      </section>
-    </main>
+      <div id="order-list" class="drink-cards-grid"></div>
+    </section>
+  </main>
 
-    <script type="module" src="./src/main.js"></script>
-  </body>
+  <script type="module" src="./src/main.js"></script>
+</body>
 </html>
