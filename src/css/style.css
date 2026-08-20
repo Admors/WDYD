@@ -6,6 +6,8 @@
   --text-muted: #94a3b8;
   --accent-primary: #38bdf8;
   --accent-primary-hover: #0284c7;
+  --accent-template: #f59e0b;
+  --accent-template-hover: #d97706;
   --danger-color: #ef4444;
   --radius-lg: 20px;
   --radius-md: 12px;
@@ -208,17 +210,60 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
   transform: scale(0.98);
 }
 
-/* Section Cartes de Commande (Pour le Barman) */
+/* Header & Filtres par Catégorie/Template */
 .order-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.order-header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
 .order-header h2 {
   font-size: 1.2rem;
   font-weight: 800;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Boutons de Catégories (Classico, Souper...) */
+.btn-template {
+  background: var(--card-bg);
+  color: var(--text-muted);
+  border: 1px solid var(--card-border);
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-template:hover {
+  background: #1e2d42;
+  color: var(--text-main);
+}
+
+.btn-template.active {
+  background: var(--accent-template);
+  color: #0a0e17;
+  border-color: var(--accent-template);
+  font-weight: 900;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+.btn-template.active:active {
+  background: var(--accent-template-hover);
 }
 
 .btn-reset {
@@ -228,8 +273,10 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
   font-weight: 700;
   cursor: pointer;
   font-size: 0.85rem;
+  padding: 0.45rem;
 }
 
+/* Section Cartes de Commande (Pour le Barman) */
 .drink-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -249,6 +296,7 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  transition: var(--transition-smooth);
 }
 
 .drink-card-title {
@@ -275,6 +323,18 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
+/* Mode Quantité 0 (Grisé + Poubelle) */
+.drink-card.is-zero {
+  opacity: 0.45;
+  border-color: #334155;
+  filter: grayscale(0.6);
+}
+
+.drink-card.is-zero .btn-minus {
+  background: var(--danger-color);
+  color: #fff;
+}
+
 /* Contrôles tactiles XXL (+ / -) */
 .drink-card-controls {
   display: flex;
@@ -286,17 +346,6 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
   padding: 0.35rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--card-border);
-}
-
-.drink-card.is-zero {
-  opacity: 0.45;
-  border-color: #334155;
-  filter: grayscale(0.5);
-}
-
-.drink-card.is-zero .btn-minus {
-  background: var(--danger-color);
-  color: #fff;
 }
 
 .btn-counter {
@@ -325,27 +374,4 @@ input[type="color"]::-webkit-color-swatch { border: none; border-radius: 6px; }
   font-size: 1.4rem;
   font-weight: 900;
   color: var(--text-main);
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.btn-classico {
-  background: #f59e0b;
-  color: #0a0e17;
-  border: none;
-  padding: 0.4rem 0.75rem;
-  border-radius: var(--radius-md);
-  font-weight: 800;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.btn-classico:active {
-  transform: scale(0.95);
-  background: #d97706;
 }

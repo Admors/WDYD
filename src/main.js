@@ -12,19 +12,50 @@ const GLASS_SVGS = {
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("drink-form");
   const glassButtons = document.querySelectorAll(".btn-glass-type");
+  const templateButtons = document.querySelectorAll(".btn-template");
   const orderList = document.getElementById("order-list");
   const totalCount = document.getElementById("total-count");
   const resetBtn = document.getElementById("reset-order");
-  const classicoBtn = document.getElementById("classico-btn");
 
+  // Helper pour basculer le verre actif dans l'UI et le Store
+  function selectGlassInput(glassType) {
+    glassButtons.forEach((btn) => {
+      const isActive = btn.dataset.glass === glassType;
+      btn.classList.toggle("active", isActive);
+    });
+    store.setSelectedGlass(glassType);
+  }
+
+  // Sélection manuelle du type de verre
   glassButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      glassButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      store.setSelectedGlass(btn.dataset.glass);
+      selectGlassInput(btn.dataset.glass);
     });
   });
 
+  // Gestion de la sélection des catégories (Templates)
+  templateButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // 1. Mise à jour de la classe active sur les boutons de catégorie
+      templateButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // 2. Chargement du template dans le store
+      const templateKey = btn.dataset.template;
+      store.loadTemplate(templateKey);
+
+      // 3. Adaptation dynamique du verre par défaut selon la catégorie
+      if (templateKey === "souper") {
+        selectGlassInput("wine");
+      } else {
+        selectGlassInput("pint");
+      }
+
+      render();
+    });
+  });
+
+  // Soumission du formulaire d'ajout personnalisé
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const nameInput = document.getElementById("drink-name");
@@ -33,18 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
     store.addDrink(
       nameInput.value,
       store.getState().selectedGlass,
-      colorInput.value,
+      colorInput.value
     );
 
     nameInput.value = "";
     render();
   });
 
-  classicoBtn.addEventListener("click", () => {
-    store.loadClassico();
-    render();
-  });
-
+  // Ingestion des clics + / - dans la grille de commande
   orderList.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn-counter");
     if (!btn) return;
@@ -56,26 +83,25 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
+  // Vider complètement la commande
   resetBtn.addEventListener("click", () => {
     store.clear();
     render();
   });
 
+  // Rendu UI
   function render() {
     orderList.innerHTML = "";
 
     store.getState().drinks.forEach((drink) => {
       const card = document.createElement("div");
-
-      // Ajout de la classe is-zero si quantité = 0
       card.className = `drink-card ${drink.qty === 0 ? "is-zero" : ""}`;
 
       const svgIcon = (GLASS_SVGS[drink.glass] || GLASS_SVGS.pint).replace(
         "{COLOR}",
-        drink.color,
+        drink.color
       );
 
-      // Icône du bouton moins : si à 0, affiche une poubelle
       const minusIcon = drink.qty === 0 ? "🗑️" : "-";
 
       card.innerHTML = `
@@ -93,5 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     totalCount.textContent = store.getTotalCount();
   }
 
+  // Chargement initial du template Classico par défaut
+  store.loadTemplate("classico");
   render();
 });
