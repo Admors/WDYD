@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Force le sous-dossier GitHub Pages exact
   base: '/WDYD/',
 
   build: {

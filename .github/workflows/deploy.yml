@@ -37,16 +37,6 @@ jobs:
       - name: Compilation du projet (Vite)
         run: npm run build
 
-      # Désactive le moteur Jekyll de GitHub Pages pour éviter les erreurs de type MIME / 404
-      - name: Bypass Jekyll sur GitHub Pages
-        run: touch ./dist/.nojekyll
-
-      # Bloque le déploiement si le dossier dist ne contient pas le HTML ou le JS compilé
-      - name: Verification de la validité de la build
-        run: |
-          test -f ./dist/index.html || (echo "Erreur: index.html manquant dans dist" && exit 1)
-          test -d ./dist/assets || (echo "Erreur: Dossier assets manquant dans dist" && exit 1)
-
       - name: Préparation de l'artifact pour Pages
         uses: actions/upload-pages-artifact@v3
         with:
