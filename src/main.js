@@ -1,5 +1,5 @@
-import "/css/style.css"; 
-import { store } from "/js/store.js";
+import "./css/style.css"; 
+import { store } from "./js/store.js";
 
 const GLASS_SVGS = {
   pint: `<svg viewBox="0 0 24 24"><path d="M6 2L8 22H16L18 2H6Z" stroke="#94a3b8" stroke-width="1.5" fill="none"/><path d="M7 6L8 20H16L17 6H7Z" fill="{COLOR}"/></svg>`,
