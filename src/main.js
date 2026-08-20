@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Gestion de la sélection des catégories (Templates)
+  // Gestion de la sélection des catégories (Template)
   templateButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       // 1. Mise à jour de la classe active sur les boutons de catégorie
