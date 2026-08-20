@@ -37,6 +37,10 @@ jobs:
       - name: Compilation du projet (Vite)
         run: npm run build
 
+      # Crucial : Désactive le moteur Jekyll de GitHub Pages pour autoriser les assets Vite
+      - name: Désactiver Jekyll
+        run: touch ./dist/.nojekyll
+
       - name: Préparation de l'artifact pour Pages
         uses: actions/upload-pages-artifact@v3
         with:

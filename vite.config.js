@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Racine par défaut pour le local (localhost:4173/)
-  base: '/',
+  base: './',
 
   build: {
     outDir: 'dist',
