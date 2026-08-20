@@ -20,6 +20,28 @@ export const TEMPLATES = Object.freeze({
       { id: 7, name: "Blanc Jus", glass: "pint", color: "#6aff00ff", qty: 0 },
     ],
   },
+  local: {
+    label: "Local",
+    drinks: [
+      { id: 201, name: "Bière", glass: "pint", color: "#f59e0b", qty: 0 },
+      { id: 202, name: "Mazout", glass: "pint", color: "#311807", qty: 0 },
+      { id: 203, name: "Panaché", glass: "pint", color: "#facc15", qty: 0 },
+      { id: 204, name: "Get 27", glass: "shot", color: "#10b981", qty: 0 },
+      { id: 205, name: "Blanc Coca", glass: "pint", color: "#311807", qty: 0 },
+      { id: 206, name: "Blanc Icetea", glass: "pint", color: "#d97706", qty: 0 },
+      { id: 207, name: "Blanc Sprite", glass: "pint", color: "#e2e8f0", qty: 0 },
+      { id: 208, name: "Rhum Coca", glass: "pint", color: "#311807", qty: 0 },
+      { id: 209, name: "Corona", glass: "pint", color: "#fef08a", qty: 0 },
+      { id: 210, name: "Desperado", glass: "pint", color: "#f59e0b", qty: 0 },
+      { id: 211, name: "Castle Rouge", glass: "pint", color: "#9f1239", qty: 0 },
+      { id: 212, name: "Coca", glass: "soft", color: "#311807", qty: 0 },
+      { id: 213, name: "Sprite", glass: "soft", color: "#f8fafc", qty: 0 },
+      { id: 214, name: "Ice Tea", glass: "soft", color: "#d97706", qty: 0 },
+      { id: 215, name: "Ice Tea Pêche", glass: "soft", color: "#fb923c", qty: 0 },
+      { id: 216, name: "Ice Tea Green", glass: "soft", color: "#84cc16", qty: 0 },
+      { id: 217, name: "Fanta", glass: "soft", color: "#f97316", qty: 0 },
+    ],
+  },
   souper: {
     label: "Souper (Vin)",
     drinks: [
