@@ -139,16 +139,21 @@
       <div class="order-header">
         <h2>Commande (<span id="total-count">0</span>)</h2>
         <div class="header-actions">
-          <button class="btn-template active" data-template="classico" type="button">⚡ Classico</button>
+          <p class="template-label">Choisir quelque chose de pré-fait :</p>
+          <button class="btn-template" data-template="classico" type="button">⚡ Classico</button>
           <button class="btn-template" data-template="local" type="button">🏠 Local</button>
           <button class="btn-template" data-template="souper" type="button">🍷 Souper (Vin)</button>
-          <button id="reset-order" class="btn-reset" type="button">Vider</button>
+          <button id="reset-order" class="btn-reset" type="button">🍺 Vider ton verre</button>
         </div>
       </div>
 
       <div id="order-list" class="drink-cards-grid"></div>
     </section>
   </main>
+
+<footer class="app-footer">
+    <p>&copy; Fait avec 🍻 par Julien "Admors" • <a href="mailto:contact@jucit.be?subject=Suggestions%20WhatDoYouDrink" class="footer-link">Suggestions</a></p>
+  </footer>
 
   <script type="module" src="src/main.js"></script>
 </body>

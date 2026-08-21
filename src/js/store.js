@@ -102,7 +102,6 @@ export const createStore = (initialState = {}) => {
       const template = TEMPLATES[templateKey];
       if (!template) return;
 
-      // Deep copy des objets pour éviter les mutations croisées
       state.drinks = template.drinks.map((drink) => ({ ...drink }));
     },
 

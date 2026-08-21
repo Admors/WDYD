@@ -120,6 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Chargement initial du template Classico par défaut
-  store.loadTemplate("classico");
+  store.loadTemplate("");
   render();
 });
